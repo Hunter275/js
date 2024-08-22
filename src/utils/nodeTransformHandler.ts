@@ -2,16 +2,16 @@ import type { SimpleEventDispatcher } from "ste-simple-events";
 import type { Logger } from "tslog";
 import * as Protobuf from "../protobufs.js";
 import * as Types from "../types.js";
-import { Transform } from "stream";
+import { Transform } from "node:stream";
 
 export const nodeTransformHandler = (
-  log: Logger<unknown>,
+  logger: Logger<unknown>,
   onReleaseEvent: SimpleEventDispatcher<boolean>,
   onDeviceDebugLog: SimpleEventDispatcher<Uint8Array>,
   concurrentLogOutput: boolean,
 ) => {
   let byteBuffer = new Uint8Array([]);
-  log = log.getSubLogger({ name: "streamTransfer" });
+  const log = logger.getSubLogger({ name: "streamTransfer" });
   return new Transform({
     transform(chunk: Buffer | Uint8Array, _encoding, controller) {
       onReleaseEvent.subscribe(() => {

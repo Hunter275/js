@@ -11,7 +11,7 @@ export class NodeSerialConnection extends MeshDevice {
   protected portId: string;
 
   /** Serial port used to communicate with device. */
-  public port: any | undefined;
+  public port: SerialPort.SerialPort | undefined;
 
   /**Path to the serial port being opened. */
   private portPath: string | undefined;
@@ -109,7 +109,7 @@ export class NodeSerialConnection extends MeshDevice {
       this.complete();
     });
 
-    this.port.on("error", (err: any) => {
+    this.port.on("error", (err: Error) => {
       console.log(err);
     });
   }

@@ -41,8 +41,8 @@ const Connect = async () => {
     console.log("NodeInfo: ", packet);
   });
   const onMessage = (sender, message) => {
-    console.log("Message from: " + sender);
-    console.log("Message was: " + message);
+    console.log(`Message from: ${sender}`);
+    console.log(`Message was: ${message}`);
   };
 
   connection.events.onRemoteHardwarePacket.subscribe((packet) => {
