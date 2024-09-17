@@ -71,6 +71,14 @@ export class EventSystem {
     new SimpleEventDispatcher<Protobuf.ModuleConfig.ModuleConfig>();
 
   /**
+   * Fires when a new CannedMessagesConfig message is received
+   *
+   * @event onCannedMessagesConfigPacket
+   */
+  public readonly onCannedMessagesConfigPacket =
+    new SimpleEventDispatcher<Protobuf.CannedMessages.CannedMessageModuleConfig>();
+
+  /**
    * Fires when a new MeshPacket message containing a ATAK packet has been
    * received from device
    *

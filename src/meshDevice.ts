@@ -883,6 +883,17 @@ export abstract class MeshDevice {
         break;
       }
 
+      case "cannedMessagesConfig": {
+        this.log.trace(
+          Types.Emitter[Types.Emitter.HandleFromRadio],
+          `🥫 Received Canned Messages Config`,
+        );
+
+        this.events.onCannedMessagesConfigPacket.dispatch(
+          decodedMessage.payloadVariant.value,
+        )
+      }
+
       case "channel": {
         this.log.trace(
           Types.Emitter[Types.Emitter.HandleFromRadio],
